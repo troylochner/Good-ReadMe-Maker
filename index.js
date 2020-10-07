@@ -49,13 +49,13 @@ async function getUserInput() {
             },
         ]);
 
-        const filename = "appReadMe.md"; //plan to make this fancier
+        const filename = "README_AUTO.md"; //plan to make this fancier
         
         const readMeContent = 
 
 `
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/troylochner/Good-ReadMe-Maker?style=flat-square)
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/troylochner/Good-ReadMe-Maker)
 
 ## Project Name: ${readMeInput.projectTitle}
 
@@ -82,7 +82,6 @@ ${readMeInput.appTests}
 ${readMeInput.faqs}
 
 `
-
         fs.writeFile(filename, readMeContent , function (err) {
             if (err) {
                 return console.log(err);

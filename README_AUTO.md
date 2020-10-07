@@ -1,24 +1,24 @@
 
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/troylochner/Good-ReadMe-Maker?style=flat-square)
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/troylochner/Good-ReadMe-Maker)
 
-## Project Name: This is it
+## Project Name: 
 
 
 ## Project Description :
-Maybe
+
 
 ## Table of Contents :
-Enter somethin
+
 
 ## Installation Directions :
-HEre
+
 
 ## Application Usage :
 
 
 ## Contributors :
-j
+
 
 ## App Tests :
 
