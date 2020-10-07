@@ -45,12 +45,10 @@ function getUserInput() {
 
 function makeReadMe(answers){   
     return `
-    
-![GitHub commit activity](https://img.shields.io/github/commit-activity/w/troylochner/Good-ReadMe-Maker?style=flat-square)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/w/troylochner/covid19-info?style=for-the-badge)
+
+![GitHub last commit](https://img.shields.io/github/last-commit/troylochner/Good-ReadMe-Maker)
 
 ## Project Name: ${answers.projectTitle}
-
 
 ## Project Description :
 ${answers.projectDescription}
