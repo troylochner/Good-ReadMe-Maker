@@ -2,55 +2,61 @@ const fs = require("fs");
 const util = require("util");
 var inquirer = require("inquirer");
 
+getUserInput();
+
 
 async function getUserInput() {
     try {
-        const userData = await inquirer.prompt([{
+        const readMeInput = await inquirer.prompt([{
                 type: "input",
-                message: "What is your name?",
-                name: "name"
+                message: "Project Title :",
+                name: "projectTitle"
             },
             {
                 type: "input",
-                message: "Where do you live",
-                name: "location"
+                message: "Description : ",
+                name: "projectDescription"
             },
             {
                 type: "input",
-                message: "Write a brief bio about yourself.",
-                name: "bio"
+                message: "Table of Contents : ",
+                name: "tableOfContents"
             },
             {
                 type: "input",
-                message: "What is your linkedIn URL",
-                name: "linkedin"
+                message: "Installation Instructions : ",
+                name: "installDirections"
             },
             {
                 type: "input",
-                message: "What is your Git Hub profile URL?",
-                name: "github"
-            }
+                message: "Usage Instructions : ",
+                name: "appUsageIns"
+            },
+            {
+                type: "input",
+                message: "Contributing Developers : ",
+                name: "contributors"
+            },
+            {
+                type: "input",
+                message: "App Tests : ",
+                name: "appTests"
+            },
+            {
+                type: "input",
+                message: "Frequently Asked Questions : ",
+                name: "faqs"
+            },
         ]);
 
-        const filename = "index.html"; //plan to make this fancier
-        const htmlContent = 
-`<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Simple Simple Bio Page</title>
-</head>
-<body>
-<p>Name: ${userData.name}</p>
-<p>Location: ${userData.location}</p>
-<p>Bio: ${userData.bio}</p>
-<p>LinkedIn: ${userData.linkedin}</p>
-<p>Github: ${userData.github}</p>
-</body>
-</html>`
+        const filename = "appReadMe.md"; //plan to make this fancier
+        
+        const readMeContent = 
+`
+## Project Name: ${readMeInput.projectTitle}
+`
 
-        fs.writeFile(filename, htmlContent , function (err) {
+        fs.writeFile(filename, readMeContent , function (err) {
             if (err) {
                 return console.log(err);
             };
