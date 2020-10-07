@@ -54,6 +54,28 @@ async function getUserInput() {
         const readMeContent = 
 `
 ## Project Name: ${readMeInput.projectTitle}
+
+## Project Description :
+${readMeInput.projectDescription}
+
+## Table of Contents :
+${readMeInput.tableOfContents}
+
+## Installation Directions :
+${readMeInput.installDirections}
+
+## Application Usage :
+${readMeInput.appUsageIns}
+
+## Contributors :
+${readMeInput.contributors}
+
+## App Tests :
+${readMeInput.appTests}
+
+## Frequently Asked Questions :
+${readMeInput.faqs}
+
 `
 
         fs.writeFile(filename, readMeContent , function (err) {
