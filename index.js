@@ -52,8 +52,13 @@ async function getUserInput() {
         const filename = "appReadMe.md"; //plan to make this fancier
         
         const readMeContent = 
+
 `
+
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/troylochner/Good-ReadMe-Maker)
+
 ## Project Name: ${readMeInput.projectTitle}
+
 
 ## Project Description :
 ${readMeInput.projectDescription}

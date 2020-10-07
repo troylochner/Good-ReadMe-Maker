@@ -1,5 +1,9 @@
 
+
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/troylochner/Good-ReadMe-Maker)
+
 ## Project Name: 
+
 
 ## Project Description :
 
