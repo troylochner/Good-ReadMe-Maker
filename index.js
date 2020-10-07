@@ -1,96 +1,90 @@
 const fs = require("fs");
 const util = require("util");
-var inquirer = require("inquirer");
+const inquirer = require("inquirer");
 
-getUserInput();
+const writeFileAsync = util.promisify(fs.writeFile);
 
-
-async function getUserInput() {
-    try {
-        const readMeInput = await inquirer.prompt([{
-                type: "input",
-                message: "Project Title :",
-                name: "projectTitle"
-            },
-            {
-                type: "input",
-                message: "Description : ",
-                name: "projectDescription"
-            },
-            {
-                type: "input",
-                message: "Table of Contents : ",
-                name: "tableOfContents"
-            },
-            {
-                type: "input",
-                message: "Installation Instructions : ",
-                name: "installDirections"
-            },
-            {
-                type: "input",
-                message: "Usage Instructions : ",
-                name: "appUsageIns"
-            },
-            {
-                type: "input",
-                message: "Contributing Developers : ",
-                name: "contributors"
-            },
-            {
-                type: "input",
-                message: "App Tests : ",
-                name: "appTests"
-            },
-            {
-                type: "input",
-                message: "Frequently Asked Questions : ",
-                name: "faqs"
-            },
+function getUserInput() {
+    return inquirer.prompt([
+          {
+              type: "input",
+              message: "Project Title :",
+              name: "projectTitle"
+          }, {
+              type: "input",
+              message: "Description : ",
+              name: "projectDescription"
+          }, {
+              type: "input",
+              message: "Table of Contents : ",
+              name: "tableOfContents"
+          }, {
+              type: "input",
+              message: "Installation Instructions : ",
+              name: "installDirections"
+          }, {
+              type: "input",
+              message: "Usage Instructions : ",
+              name: "appUsageIns"
+          }, {
+              type: "input",
+              message: "Contributing Developers : ",
+              name: "contributors"
+          }, {
+              type: "input",
+              message: "App Tests : ",
+              name: "appTests"
+          }, {
+              type: "input",
+              message: "Frequently Asked Questions : ",
+              name: "faqs"
+          }
         ]);
+    }
 
-        const filename = "README_AUTO.md"; //plan to make this fancier
-        
-        const readMeContent = 
 
-`
-
+function makeReadMe(answers){   
+    return `
+    
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/troylochner/Good-ReadMe-Maker?style=flat-square)
-
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/troylochner/covid19-info?style=for-the-badge)
 
-## Project Name: ${readMeInput.projectTitle}
+## Project Name: ${answers.projectTitle}
 
 
 ## Project Description :
-${readMeInput.projectDescription}
+${answers.projectDescription}
 
 ## Table of Contents :
-${readMeInput.tableOfContents}
+${answers.tableOfContents}
 
 ## Installation Directions :
-${readMeInput.installDirections}
+${answers.installDirections}
 
 ## Application Usage :
-${readMeInput.appUsageIns}
+${answers.appUsageIns}
 
 ## Contributors :
-${readMeInput.contributors}
+${answers.contributors}
 
 ## App Tests :
-${readMeInput.appTests}
+${answers.appTests}
 
 ## Frequently Asked Questions :
-${readMeInput.faqs}
-
+${answers.faqs}
 `
-        fs.writeFile(filename, readMeContent , function (err) {
-            if (err) {
-                return console.log(err);
-            };
-            console.log("Done");
-        })
-    } catch (err) {
-        console.log(err);
-    }
 }
+
+
+getUserInput()
+  .then(function(answers) {
+    const readMeMD = makeReadMe(answers);
+
+    return writeFileAsync("README_AUTO.md", readMeMD);
+  })
+  .then(function() {
+    console.log("Successfully wrote to auto readme file.");
+  })
+  .catch(function(err) {
+    console.log(err);
+  });
